@@ -1,0 +1,78 @@
+.menu{
+    margin: 0px 5px;
+    margin-bottom: 10px;
+}
+
+.menu > *{
+    width: 200px;
+}
+
+@media (max-width:500px) {
+  .menu .box{
+    visibility: hidden;
+  }
+  .menu .box *{
+    visibility: hidden;
+  }
+
+  .menu .lable:hover .box {
+    visibility:visible;
+    background: red;
+  }
+}
+
+@media (min-width:500px) {
+  .menu .box{
+    visibility:visible;
+      margin: 0px 5px;
+      padding: 0px;
+      box-shadow: 6px 1px 2px rgb(230, 230, 230);
+      position: relative;
+      left: 0px;
+      transition-duration: 1s;
+  }
+  .menu .box *{
+      visibility:visible;
+  }
+}
+.menu .box:hover{
+    left: 10px;
+}
+
+.menu .box button{
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0px;
+}
+
+.menu .box .selection {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu .box .selection > *{
+  display: flex;
+  flex-direction: column;
+  -height: 0px;
+  overflow: hidden;
+  transition-duration: 1s;
+  box-shadow: 0px 0px 0px 0px #000;
+}
+
+.menu div > h3,.menu div > h2, .menu div > h1{
+    padding: 20px 0px;
+    margin: 0px;
+}
+
+.empty{
+  box-shadow: 0 0px 0px 0px #000 inset;
+  transition-duration: 1s;
+}
+
+.menu .box .orange{
+  width: auto;
+  margin: 10px;
+  box-shadow: 0 0px 50px -20px orange inset;
+  border-radius: 2px;
+  transition-duration: 1s;
+}

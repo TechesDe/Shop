@@ -1,0 +1,52 @@
+.addSubtype{
+  display: flex;
+  flex-direction: column;
+}
+
+.formbox{
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.formbox >* {
+  margin: auto;
+  padding: 5px;
+}
+
+.add{
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 2px rgb(233, 233, 233);
+  align-items: center;
+}
+
+.add  *{
+  margin: 5px;
+  text-align: center;
+
+}
+
+.add h1{
+  font-size: 20px;
+}
+
+
+h1{
+  font-family: 'Play', sans-serif;
+  margin: 0px;
+  margin-top: 10px
+}
+
+.send{
+  margin: 2px;
+    padding: 5px;
+    background-color: rgb(53, 180, 15);
+    border-radius: 10px;
+    border-color:  rgb(53, 180, 15);
+    font-family: 'Play', sans-serif;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    border-style: solid;
+}

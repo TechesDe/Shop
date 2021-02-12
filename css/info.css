@@ -1,0 +1,28 @@
+.infocontainer{
+    margin: 10px;
+    font-family: 'Play', sans-serif;
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.descriptions{
+    display: flex;
+    flex-direction: column;
+}
+
+.descriptions > *{
+    margin: 10px;
+}
+
+.category{
+    padding: 10px;
+    font-weight: bold;
+}
+
+.categorydesc{
+    padding: 10px;
+}

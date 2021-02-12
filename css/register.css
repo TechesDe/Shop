@@ -1,0 +1,44 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Play', sans-serif;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+    width: 50vw;
+}
+
+.form > *{
+    margin-bottom: 0px;
+}
+
+.form > input{
+    margin-bottom: 10px;
+}
+
+.form > h1{
+    margin-bottom: 10px;
+    align-self: center;
+}
+
+.form > h2{
+    color: red;
+}
+
+.send{
+    padding: 5px;
+    background-color: rgb(53, 180, 15);
+    border-radius: 10px;
+    border-color:  rgb(53, 180, 15);
+    font-family: 'Play', sans-serif;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    border-style: solid;
+}

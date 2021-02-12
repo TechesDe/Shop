@@ -1,0 +1,141 @@
+.cardform{
+    position: relative;
+    right: 0px;
+    bottom: 0px;
+    width: 240px;
+    margin: 0px;
+    box-shadow: 2px 2px 2px rgb(231, 231, 231);
+    border-radius: 5px;
+    background-color: white;
+    transition-duration: 0.5s;
+    border-color: #DCDCDC;
+    font-family: 'Play', sans-serif;
+}
+
+.cardform button{
+    position: relative;
+    right: 0px;
+    bottom: 0px;
+    width: 240px;
+    margin: 0px;
+    box-shadow: 2px 2px 2px rgb(231, 231, 231);
+    border-radius: 5px;
+    background-color: white;
+    transition-duration: 0.5s;
+    border-color: #DCDCDC;
+    font-family: 'Play', sans-serif;
+}
+
+.cardform:hover{
+    right: 5px;
+    bottom: 5px;
+}
+
+.cardform img{
+    height: 220px;
+    width: 220px;
+
+}
+
+.cardform > *{
+    margin: 10px 0px;
+}
+
+.cardform{
+  margin: 10px;
+}
+
+.addcardform{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    right: 0px;
+    bottom: 0px;
+    width: 240px;
+    margin: 10px;
+    box-shadow: 2px 2px 2px rgb(231, 231, 231);
+    border-radius: 5px;
+    background-color: white;
+    transition-duration: 0.5s;
+    border-color: #DCDCDC;
+    font-family: 'Play', sans-serif;
+}
+
+.addcardform:hover{
+    box-shadow: 0px 0px 2px 5px rgb(231, 231, 231);
+    background-color: rgb(241, 241, 241);
+}
+
+.addcardform > *{
+    margin: 5px;
+}
+
+.addcardform div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.addcardform div > *{
+    width: 50%;
+}
+
+.addcardform .lable{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 5px;
+    height: 140px;
+    transition-duration: 1s;
+}
+
+.addcardform .lable:focus,
+.addcardform .lable:hover{
+    box-shadow: 0 -200px 200px -150px rgb(77, 146, 248) inset;
+}
+
+.addcardform .lable > label{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: #fff;
+    text-align: center;
+    margin: auto;
+    font-size: 1.25em;
+    font-weight: 700;
+    color: #000;
+    border-radius: 5px;
+    transition-duration: 1s;
+}
+
+.addcardform .addmanafacturer{
+    width: auto;
+}
+
+.addcardform input{
+    font: 400 13.3333px 'Play';
+    text-align: center;
+    
+}
+
+
+.addcardform select{
+    font: 400 13.333px 'Play';
+    text-align: center;
+    text-shadow: 3px 1px rgb(219, 219, 219);
+}
+
+.addcardform .selecttype{
+    font: 900 19px 'Play';
+    text-align: center;
+    text-shadow: 3px 1px rgb(219, 219, 219);
+}
+
+.addcardform option{
+    font: 400 13.3333px 'Play';
+    text-align: center;
+}

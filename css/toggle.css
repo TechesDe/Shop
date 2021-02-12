@@ -1,0 +1,47 @@
+.circle{
+    position:relative;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+.non-active{
+
+    background: rgb(231, 231, 231);
+    transition-duration: .5s;
+}
+
+.non-active:hover{
+    background: rgb(216, 216, 216);
+    cursor: pointer
+}
+
+.active{
+    background: rgb(255, 171, 61);
+    transition-timing-function:ease-out;
+    transition-duration: .5s;
+    margin: 5px;
+}
+
+.opt{
+    display: flex;
+    flex-direction: row;
+    border-radius:inherit;
+}
+
+.opt *{
+    margin: inherit;
+    margin: 5px;
+}
+
+.active:hover{
+    background: rgb(255, 148, 7);
+    cursor: pointer
+}
+
+.toggle{
+    display: flex;
+    flex-direction: column;
+    background: rgb(250, 250, 250);
+    border-radius: 10px;
+}
