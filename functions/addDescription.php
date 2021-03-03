@@ -9,6 +9,8 @@ if($access=='No'||$access=='customer'){
     exit();
 }
 
+
+
 if(!isset($_POST['category']))
 {
     setcookie('error','Добавление описания без указания категории невозможно',time()+60,'/');
@@ -27,9 +29,17 @@ if(!isset($_POST['idmodel']))
     header('Location: /');
 }
 
+$form='<form id="form" action="/info.php" method="POST">
+<input type="hidden" name="id" value="'.$_POST['idmodel'].'">
+</form>
+<script>
+    document.getElementById(\'form\').submit();
+</script>
+';
+
 require_once "../query/querys.php";
 
 $QUERY->addDescription($_POST['idmodel'],$_POST['category'],$_POST['description']);
 setcookie('message','Описание было добавлено',time()+60,'/');
-header('Location: /');
+echo($form);
 ?>

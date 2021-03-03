@@ -2,7 +2,7 @@
 require_once "../special/check.php";
 require_once "../query/querys.php";
 
-if($access=='customer'){
+if($access=='customer'||$access=='No'){
   echo ("Нет авторизации для выполнения действия");
   echo ('<script>
           function toMain(){

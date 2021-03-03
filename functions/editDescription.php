@@ -36,7 +36,15 @@ if(!isset($_POST['id']))
 
 require_once "../query/querys.php";
 
+$form='<form id="form" action="/info.php" method="POST">
+<input type="hidden" name="id" value="'.$_POST['idmodel'].'">
+</form>
+<script>
+    document.getElementById(\'form\').submit();
+</script>
+';
+
 $QUERY->UpdateDescription($_POST['id'],$_POST['idmodel'],$_POST['category'],$_POST['description']);
 setcookie('message','Описание было изменено',time()+60,'/');
-header('Location: /');
+echo($form);
 ?>

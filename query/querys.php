@@ -1,7 +1,6 @@
 <?php
 $QUERY=new Query('localhost','root','','production');
 
-
 class Query{
     public $connect;
 
@@ -16,7 +15,7 @@ class Query{
 
     function AllModels(){
         $models=mysqli_query($this->connect,"
-        SELECT `model`.`name`, `manufacturer`.`name`, `type`.`name`,`model`.`ImgPath`, `model`.`ID_model`
+        SELECT `model`.`name`, `manufacturer`.`name`, `type`.`name`, `model`.`ID_model`
         FROM `model`
         INNER JOIN `manufacturer` ON `manufacturer`.`ID_manufacturer`=`model`.`ID_manufacturer`
         INNER JOIN `type` ON `type`.`ID_Type`=`model`.`ID_type`
@@ -36,6 +35,30 @@ class Query{
         return mysqli_fetch_all(mysqli_query($this->connect,"
         SELECT * FROM `manufacturer`
         "));
+    }
+
+    function getTypesWithManafacrures(){
+        return mysqli_fetch_all(mysqli_query($this->connect,"
+        SELECT `type`.`ID_Type`,`type`.`name`
+        FROM `type`
+        INNER JOIN `model`
+        ON `type`.`ID_Type`=`model`.`ID_type`
+        INNER JOIN `manufacturer`
+        ON `manufacturer`.`ID_manufacturer`=`model`.`ID_manufacturer`
+        GROUP BY `type`.`name`
+        "));
+    }
+    function getManafacrurersByIDType($id){
+        return mysqli_fetch_all(mysqli_query($this->connect,"
+              SELECT `manufacturer`.`ID_manufacturer`,`manufacturer`.`name`
+          FROM `manufacturer`
+          INNER JOIN `model`
+          ON `manufacturer`.`ID_manufacturer`=`model`.`ID_manufacturer`
+          INNER JOIN `type`
+          ON `type`.`ID_Type`=`model`.`ID_type`
+          WHERE `type`.`ID_Type`='$id'
+          GROUP BY `manufacturer`.`name`
+          "));
     }
 
     function UsersByPhone($phone){
@@ -109,9 +132,9 @@ class Query{
 
     function UpdateDescription($id,$model,$category,$description){
         mysqli_query($this->connect,"
-        UPDATE  `characteristics` SET 
-        `ID_Model` = $model, 
-        `Description` = '$description', 
+        UPDATE  `characteristics` SET
+        `ID_Model` = $model,
+        `Description` = '$description',
         `Category` = '$category'
         WHERE `characteristics`.`ID_Characteristic` = $id
         ");
@@ -119,13 +142,13 @@ class Query{
 
     function addDescription($model,$category,$description){
         mysqli_query($this->connect,"
-        INSERT INTO `characteristics` (`ID_Model`, `Description`, `Category`, `ID_Characteristic`) VALUES ('$model', '$category', '$description', NULL)
+        INSERT INTO `characteristics` (`ID_Model`, `Description`, `Category`, `ID_Characteristic`) VALUES ('$model', '$description', '$category', NULL)
         ");
     }
 
     function ModelsByID($id){
         $models=mysqli_query($this->connect,"
-        SELECT `model`.`name`, `manufacturer`.`name`, `type`.`name`,`model`.`ImgPath`, `model`.`ID_model`
+        SELECT `model`.`name`, `manufacturer`.`name`, `type`.`name`, `model`.`ID_model`,`model`.`BarCode`
         FROM `model`
         INNER JOIN `manufacturer` ON `manufacturer`.`ID_manufacturer`=`model`.`ID_manufacturer`
         INNER JOIN `type` ON `type`.`ID_Type`=`model`.`ID_type`
@@ -136,16 +159,26 @@ class Query{
     }
 
     function ModelByName($name){
-        $model=mysqli_query($this->connect,"
+        $models=mysqli_query($this->connect,"
         SELECT *
         FROM `model`
         INNER JOIN `manufacturer` ON `manufacturer`.`ID_manufacturer`=`model`.`ID_manufacturer`
         INNER JOIN `type` ON `type`.`ID_Type`=`model`.`ID_type`
         WHERE `model`.`name` LIKE ('%$name%')
         ");
-        return mysqli_fetch_all($model);
+        return mysqli_fetch_all($models);
     }
 
+    function ModelByBarcode($barcode){
+      $model=mysqli_query($this->connect,"
+      SELECT *
+      FROM `model`
+      INNER JOIN `manufacturer` ON `manufacturer`.`ID_manufacturer`=`model`.`ID_manufacturer`
+      INNER JOIN `type` ON `type`.`ID_Type`=`model`.`ID_type`
+      WHERE `model`.`BarCode`=$barcode
+      ");
+      return mysqli_fetch_all($model);
+    }
 
     function LastPriceByModelId($id){
         $price=mysqli_query($this->connect,"
@@ -218,7 +251,7 @@ class Query{
 
     function ModelByTypeAndManafacturer($type,$manafacturer){
         $model=mysqli_query($this->connect,"
-            SELECT `model`.`name`, `manufacturer`.`name`, `type`.`name`,`model`.`ImgPath`, `model`.`ID_model`
+            SELECT `model`.`name`, `manufacturer`.`name`, `type`.`name`, `model`.`ID_model`
             FROM `model`
             INNER JOIN `manufacturer` ON `manufacturer`.`ID_manufacturer`=`model`.`ID_manufacturer`
             INNER JOIN `type` ON `type`.`ID_Type`=`model`.`ID_type`
@@ -227,6 +260,24 @@ class Query{
 
         $model=mysqli_fetch_all($model);
         return $model;
+    }
+
+    function UpdateModelName($id,$name){
+        mysqli_query($this->connect,"
+            UPDATE `model` SET `name` = '$name' WHERE `model`.`ID_model` = $id
+        ");
+    }
+
+    function UpdateModelManafacturer($id,$manafacturer){
+        mysqli_query($this->connect,"
+            UPDATE `model` SET `ID_manufacturer` = '$manafacturer' WHERE `model`.`ID_model` = $id
+        ");
+    }
+
+    function UpdateModelType($id,$type){
+        mysqli_query($this->connect,"
+            UPDATE `model` SET `ID_type` = '$type' WHERE `model`.`ID_model` = $id
+        ");
     }
 
     function ManafacturerByName($name){
@@ -244,15 +295,18 @@ class Query{
 
     function addModel($barcode,$name,$IdType,$IdManafacturer,$imgpath){
         mysqli_query($this->connect,"
-        INSERT INTO `model` (`ID_model`, `BarCode`, `name`, `ID_type`, `ID_manufacturer`, `ImgPath`)
-        VALUES (NULL, '$barcode', '$name', '$IdType', '$IdManafacturer', '$imgpath')
-    ");
+        INSERT INTO `model` (`ID_model`, `BarCode`, `name`, `ID_type`, `ID_manufacturer`)
+        VALUES (NULL, '$barcode', '$name', '$IdType', '$IdManafacturer')
+        ");
+        $id=$this->ModelByBarcode($barcode);
+        $id=$id[0][0];
+        $this->addImage($id,$imgpath);
     }
 
     function addModelWithoutImg($barcode,$name,$IdType,$IdManafacturer){
         mysqli_query($this->connect,"
-        INSERT INTO `model` (`ID_model`, `BarCode`, `name`, `ID_type`, `ID_manufacturer`, `ImgPath`)
-        VALUES (NULL, '$barcode', '$name', '$IdType', '$IdManafacturer', NULL)
+        INSERT INTO `model` (`ID_model`, `BarCode`, `name`, `ID_type`, `ID_manufacturer`)
+        VALUES (NULL, '$barcode', '$name', '$IdType', '$IdManafacturer')
     ");
     }
 
@@ -274,7 +328,54 @@ class Query{
         INSERT INTO `manufacturer` (`ID_manufacturer`, `name`) VALUES (NULL, '$name')
         ");
     }
+
+    function ImagesByModelID($id){
+      return mysqli_fetch_all(mysqli_query($this->connect,"
+      SELECT * FROM `images`
+      WHERE `images`.`ID_Model`=$id
+      "));
+    }
+
+    function addImage($id,$path){
+      mysqli_query($this->connect,"
+      INSERT INTO `images` (`ID_Model`, `Path`, `number`) VALUES ('$id', '$path', NULL)
+      ");
+    }
+
+    function updateImage($path,$id){
+      mysqli_query($this->connect,"
+      UPDATE `images` SET `Path`='$path' WHERE `ID_Model`=$id
+      ");
+    }
+
+    function deleteImage($path){
+      mysqli_query($this->connect,"
+      DELETE FROM `images` WHERE `Path` LIKE ('$path')
+      ");
+    }
+
+    function deleteModel($id){
+    mysqli_query($this->connect,"
+      DELETE FROM `model` WHERE `ID_model`=$id
+      ");
+    }
+
+    function deleteDescription($id){
+    mysqli_query($this->connect,"
+      DELETE FROM `characteristics` WHERE `ID_Characteristic`=$id
+      ");
+    }
+
+    function numderLastImage(){
+        $result=mysqli_fetch_all(mysqli_query($this->connect,"
+        SELECT `number` FROM `images` ORDER BY `number` DESC LIMIT 1
+        "));
+        $result=$result[0][0];
+        return $result;
+    }
+
+    function error(){
+      return(mysqli_error($this->connect));
+    }
 }
-
-
 ?>

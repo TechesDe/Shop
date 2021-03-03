@@ -1,10 +1,20 @@
 .menu{
     margin: 0px 5px;
     margin-bottom: 10px;
+    font-family: 'Play', sans-serif;
+}
+
+.menu button{
+  font-family: 'Play', sans-serif;
+  font-size: 24px;
 }
 
 .menu > *{
     width: 200px;
+}
+
+.menu *{
+    font-family: 'Play', sans-serif;
 }
 
 @media (max-width:500px) {
@@ -35,9 +45,6 @@
       visibility:visible;
   }
 }
-.menu .box:hover{
-    left: 10px;
-}
 
 .menu .box button{
     padding: 10px;
@@ -45,18 +52,43 @@
     border-width: 0px;
 }
 
+.menu .box:hover .selection{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  z-index: 1;
+  left: 0px;
+  background: white;
+  transition: .5s;
+  padding: 10px;
+  background: #FAFAFA;
+  border-radius: 0px 12px 0px 0px;
+  font-family: 'Play', sans-serif;
+  transition-duration: 1s;
+}
+
 .menu .box .selection {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  z-index: 1;
+  left: 0px;
+  background: white;
+  transition: .5s;
+  padding: 10px;
+  background: #FAFAFA;
+  border-radius: 0px 12px 0px 0px;
+  font-family: 'Play', sans-serif;
+  transition-duration: 1s;
+}
+
+.manafacturerSelect{
+  display: flex;
+  flex-direction: column;
 }
 
 .menu .box .selection > *{
-  display: flex;
-  flex-direction: column;
-  -height: 0px;
-  overflow: hidden;
-  transition-duration: 1s;
-  box-shadow: 0px 0px 0px 0px #000;
+  margin-right: 10px;
 }
 
 .menu div > h3,.menu div > h2, .menu div > h1{
@@ -73,6 +105,13 @@
   width: auto;
   margin: 10px;
   box-shadow: 0 0px 50px -20px orange inset;
-  border-radius: 2px;
+  border-radius: 5px;
   transition-duration: 1s;
+}
+
+.menu .specialcontent{
+  padding: 20px 0px;
+  margin-top: 10px;
+  border: 2px outset black;
+  text-align: center;
 }

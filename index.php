@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Сайт Кирки</title>
+    <title>Кооператор Бытовая Техника</title>
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/card.css">
 </head>
 <body>
-
     <?php
         if(isset($_COOKIE['message']))
             print_r($_COOKIE['message']);
@@ -16,10 +15,14 @@
         //require "special/deauto.php";
     ?>
     <div class="container">
-        <?php
-            require_once "menu.php";
-            require_once "box/cardContainer.php"
-        ?>
+      <div class="headerbtms">
+        <?php require_once "box/menu.php"; ?>
+        <div></div>
+        <?php require_once "box/contacts.php"; ?>
+      </div>
+      <?php require_once "box/saleContainer.php"; ?>
+      <?php require_once "box/cardContainer.php"; ?>
+
     </div>
     <?php
         require "special/footer.php";

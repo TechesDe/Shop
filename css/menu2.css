@@ -1,0 +1,106 @@
+nav{
+  overflow: visible;
+}
+
+nav .wrapper{
+  display: flex;
+  flex-direction: row;
+  z-index: 2;
+}
+
+
+
+.menu{
+  border-radius: 0px 10px 10px 0px;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+  left: -100%;
+  transition: 1s ease-in-out;
+  width: 50vw;
+}
+
+@media (max-width:800px) {
+  .menu{
+    width: 50vw;
+  }
+}
+
+@media (min-width:800px) {
+  .menu{
+    width: 400px;
+  }
+}
+
+.box{
+  background: linear-gradient(135deg, #1ea70c, #188409 50%, #0D4A05);
+  border: 1px solid #0D4A05;
+  border-radius: 0px 10px 10px 0px;
+  color: black;
+  transition: 1s;
+}
+
+.activebox{
+  background: linear-gradient(135deg, #1ea70c, #188409 50%, #0D4A05);
+  border: 1px solid #DAAA00;
+  border-radius: 0px 10px 10px 0px;
+  color: black;
+  transition: 1s;
+}
+
+.typeName{
+
+  transition: 1s;
+  padding: 10px;
+  font-family: 'Play', sans-serif;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.typeName > span{
+  padding: 5px;
+  margin: 0px;
+  background-color: rgba(255, 255, 255,0.0);
+  border-radius: 10px;
+  border-color: rgba(255, 255, 255,0.0);
+  font-family: 'Play', sans-serif;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border-style: solid;
+  transition-duration: 1s;
+  cursor: pointer
+  animation: searchbtm 1s forwards ease-in;
+}
+
+.activebox .typeName{
+  margin: 10px;
+}
+
+.activebox .typeName > .nametype{
+  border-radius: 10px;
+  background-color: rgba(255, 140, 0,1.0);
+  border-color: rgba(255, 140, 0,1.0);
+  color: white;
+}
+
+.seletion{
+  overflow: hidden;
+  transition: 1s;
+}
+
+.orange-btm{
+  padding: 5px;
+  margin: 1px;
+  background-color: #FCAC00;
+  border-radius: 10px;
+  border-color: #FCAC00;
+  font-family: 'Play', sans-serif;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border-style: solid;
+  transition-duration: 1s;
+  cursor: pointer;
+  white-space:nowrap;
+}

@@ -7,6 +7,7 @@
 <head>
     <title>Сайт Кирки</title>
     <link rel="stylesheet" href="/css/managment.css" />
+    <link rel="stylesheet" href="/css/main.css">
 </head>
   <body>
     <?php
@@ -21,44 +22,51 @@
     }
     ?>
 
-    <?php
-    echo('<div class="messege">');
-    if(isset($_COOKIE['model'])){
 
-        echo ('<h2>ID добавленой модели: '.$_COOKIE['model'].'</h2>');
-        $model=$QUERY->ModelsByID($_COOKIE['model']);
-        $modelid=$model[0][4];
-        $modelimg=$model[0][3];
-        $modeltype=$model[0][2];
-        $modelmanafacturer=$model[0][1];
-        $modelname=$model[0][0];
-        $description=$QUERY->BrieflyDescriptonByModelId($modelid);
-        $price=$QUERY->LastPriceByModelId($modelid).'₽';
-        echo (createCard($modelimg,$modeltype,$modelmanafacturer,$modelname,$modelid,$description,$price));
-    }
-    if(isset($_COOKIE['messege'])){
-        echo ('<h2>'.$_COOKIE['messege'].'</h2>');
-    }
-    echo('</div>');
-    ?>
     <div class="formbox">
+      <?php
+      echo('<div class="messege">');
+      if(isset($_COOKIE['model'])){
+
+          echo ('<h2>ID добавленой модели: '.$_COOKIE['model'].'</h2>');
+          $model=$QUERY->ModelsByID($_COOKIE['model']);
+          $modelid=$model[0][3];
+          $modelimg=$QUERY->ImagesByModelID($modelid);
+          if($modelimg)
+            $modelimg=$modelimg[0][1];
+          else
+            $modelimg='';
+          $modeltype=$model[0][2];
+          $modelmanafacturer=$model[0][1];
+          $modelname=$model[0][0];
+          $description=$QUERY->BrieflyDescriptonByModelId($modelid);
+          $price=$QUERY->LastPriceByModelId($modelid).'₽';
+          echo (createCard($modelimg,$modeltype,$modelmanafacturer,$modelname,$modelid,$description,$price));
+      }
+      if(isset($_COOKIE['messege'])){
+          echo ('<h2>'.$_COOKIE['messege'].'</h2>');
+      }
+      echo('</div>');
+      ?>
     <?php
     $types=$QUERY->AllTypes();
     $manafacturers=$QUERY->AllManafacturers();
     echo('<link rel="stylesheet" href="/css/card.css">');
     echo (addCard());
     ?>
-    <form class="add" action="functions/addType.php" method="POST">
-      <h1>Добавить тип товаров</h1>
-      <input type="text" placeholder="Введите новый тип" name='type' value='' />
-      <button class="send" type="submit">Создать</button>
-    </form>
+    <div class="column">
+      <form class="add" action="functions/addType.php" method="POST">
+        <h1>Добавить тип товаров</h1>
+        <input type="text" placeholder="Введите новый тип" name='type' value='' />
+        <button class="send" type="submit">Создать</button>
+      </form>
 
-    <form class="add" action="functions/addManafacturer.php" method="POST">
-      <h1>Добавить нового произовдителя</h1>
-      <input type="text" placeholder="Введите нового произовдителя" name='manafacturer' value='' />
-      <button class="send" type="submit">Создать</button>
-    </form>
+      <form class="add" action="functions/addManafacturer.php" method="POST">
+        <h1>Добавить нового произовдителя</h1>
+        <input type="text" placeholder="Введите нового произовдителя" name='manafacturer' value='' />
+        <button class="send" type="submit">Создать</button>
+      </form>
+    </div>
 
     </div>
     <?php

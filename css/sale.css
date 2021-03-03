@@ -1,0 +1,106 @@
+@media (max-width:600px) {
+  .saleBlock{
+    width: 80%;
+    height: 70vh;
+    margin: auto;
+    border-radius: 10px;
+    border: 2px solid #188409;
+    overflow: hidden;
+  }
+
+  .salesLine{
+    width: 100%;
+    height: 200%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .salesLine>div{
+    width: 100%;
+    height: 50%;
+  }
+
+  .center{
+    flex-direction: column;
+  }
+}
+
+@media (min-width:600px){
+  .saleBlock{
+    width: 80%;
+    height: 30vh;
+    margin: auto;
+    border-radius: 10px;
+    border: 2px solid #188409;
+    overflow: hidden;
+  }
+
+  .salesLine{
+    width: 200%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .salesLine>div{
+    width: 50%;
+    height: 100%;
+  }
+
+  .center{
+    flex-direction: row;
+  }
+}
+
+
+
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.promo{
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  display: inline-block;
+  position: relative;
+  left: 0%;
+  top: 0%;
+  margin: 5px;
+  padding: 10px;
+  border: 2px solid #FCAC00;
+  animation: move 7s 8s;
+}
+
+@media (min-width:600px){
+  @keyframes move {
+    0%{
+      left: 0%;
+    }
+    100%{
+      left: -100%;
+    }
+  }
+}
+
+@media (max-width:600px){
+  @keyframes move {
+    0%{
+      top: 0%;
+    }
+    100%{
+      top: -100%;
+    }
+  }
+}
+
+.promo > *{
+  font-family: 'Play';
+  text-align: center;
+}
+
+.promo img{
+  object-fit: contain;
+}

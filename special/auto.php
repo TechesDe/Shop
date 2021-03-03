@@ -8,8 +8,11 @@ setcookie('email',trim($_POST['email']),time()+3600,'/');
 setcookie('phone',$_POST['phone'],time()+3600,'/');
 
 require_once "../query/querys.php";
-if(isset($_POST['phone'])&&$_POST['phone']!='')
-    $users=$QUERY->UsersByPhone($_POST['phone']);
+if(isset($_POST['phone'])&&$_POST['phone']!=''){
+  $phone=$_POST['phone'];
+  $phone=str_replace('+7','8',$phone);
+  $users=$QUERY->UsersByPhone($phone);
+}
 else
   if(isset($_POST['email'])&&$_POST['email']!='')
     $users=$QUERY->UsersByEmail($_POST['email']);

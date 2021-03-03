@@ -19,35 +19,20 @@
 
   function addCard(){
     require_once "query/querys.php";
-
-    $types=$QUERY->AllTypes();
-    $typeOptions='';
-    for($i=0;$i<count($types);$i++){
-      $typeid=$types[$i][0];
-      $typeOptions=$typeOptions.'<option type="radio" value='.$typeid.'>'.$types[$i][1].'</option>';
-    }
-    $manafacturers=$QUERY->AllManafacturers();
-    $manafacturersOptions='';
-    for($i=0;$i<count($manafacturers);$i++){
-      $manafacturersid=$manafacturers[$i][0];
-      $manafacturername=$manafacturers[$i][1];
-      if($manafacturername==''){
-        $manafacturername='Производитель отсутствует';
-      }
-      $manafacturersOptions=$manafacturersOptions.'<option type="radio" value='.$manafacturersid.'>'.$manafacturername.'</option>';
-    }
+    require_once "selectors.php";
     return '
+    <link rel="stylesheet" href="/css/card.css">
     <form enctype="multipart/form-data" class="addcardform" action="functions/addmodel.php" method="POST">
       <input id="imgfile" class="img" type="file" name="image"/>
       <p class="lable"><label for="imgfile">Load image</label></p>
-      <select class="selecttype" name="type">'.$typeOptions.'</select>
+      '.createSelectorTypes($QUERY).'
       <div>
-        <select class="addmanafacturer" name="manafacturer">'.$manafacturersOptions.'</select>
+        '.createSelectorManafacturers($QUERY).'
         <input class="addmodel" type="text" placeholder="Название модели" name="model" value="" />
       </div>
-      <input type="number" min="0" placeholder="Штрих-код" name="barcode" value="" />
-      <input type="text" placeholder="Краткое опиание" name="description" value="" />
-      <input type="number" min="0" placeholder="Цена" name="price" value="" />
+      <input class="addbarcode" type="number" min="0" placeholder="Штрих-код" name="barcode" value="" />
+      <input class="addbriefly" type="text" placeholder="Краткое опиание" name="description" value="" />
+      <input class="addprice" type="number" min="0" placeholder="Цена" name="price" value="" />
       <button type="submit" class="addcardbtm">Добавить
       </button>
     </form>';

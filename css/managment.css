@@ -5,13 +5,25 @@
 
 .formbox{
   display: flex;
-  flex-direction: row;
-  flex-grow: 1;
+
+}
+
+@media (min-width:500px) {
+  .formbox{
+    flex-direction: row;
+  }
+}
+
+@media (max-width:500px) {
+  .formbox{
+    flex-direction: column;
+  }
 }
 
 .formbox >* {
   margin: auto;
   padding: 5px;
+  flex-grow: 1;
 }
 
 .add{
@@ -49,4 +61,9 @@ h1{
     font-size: large;
     font-weight: bold;
     border-style: solid;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
 }

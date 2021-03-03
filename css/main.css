@@ -2,17 +2,55 @@ body{
     margin: 0px;
 }
 
-@media (max-width: 500px) {
-  .container{
+.container{
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width:500px) {
+
+}
+
+@media (min-width:500px) {
+  .headerbtms{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .headerbtms > *{
+    flex-grow: 2;
+  }
+
+  .headerbtms .calls{
+    flex-grow: 1;
+  }
+
+  .headerbtms nav{
+    flex-grow: 1;
   }
 }
 
-@media (min-width: 500px){
-  .container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
+button .greenaccept{
+  padding: 5px;
+  background-color: rgb(53, 180, 15);
+  border-radius: 10px;
+  border-color: rgb(53, 180, 15);
+  font-family: 'Play', sans-serif;
+  color: white;
+  font-size: large;
+  font-weight: bold;
+  border-style: solid;
+}
+
+button .redaccept{
+  padding: 5px;
+  background-color: rgb(180, 53, 15);
+  border-radius: 10px;
+  border-color: rgb(53, 180, 15);
+  font-family: 'Play', sans-serif;
+  color: white;
+  font-size: large;
+  font-weight: bold;
+  border-style: solid;
 }

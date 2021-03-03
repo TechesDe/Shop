@@ -1,17 +1,49 @@
 .infocontainer{
     margin: 10px;
     font-family: 'Play', sans-serif;
+    display: flex;
+    flex-direction: column;
+    flex: 1 auto;
 }
-
-.content{
+@media(min-width:1000px){
+  .content{
     display: flex;
     flex-direction: row;
+  }
+}
 
+@media(max-width:1000px){
+  .content{
+      display: flex;
+      flex-direction: column;
+  }
+}
+
+.typename{
+  margin: 20px 0px;
+
+}
+
+.typename >*{
+  margin: 20px;
+  display: inline;
+}
+
+.modelname{
+  margin: 20px 0px;
+
+}
+
+.modelname >*{
+  margin: 20px;
+  display: inline;
 }
 
 .descriptions{
     display: flex;
     flex-direction: column;
+    flex: 1 auto;
+    width: 100%;
 }
 
 .descriptions > *{
@@ -25,4 +57,86 @@
 
 .categorydesc{
     padding: 10px;
+}
+
+.imagebox{
+  display: flex;
+  flex-direction: column;
+}
+
+button:not([class]){
+  padding: 5px;
+  margin: 1px;
+  background-color: rgb(255, 140, 0);
+  border-radius: 10px;
+  border-color: rgb(255, 140, 0);
+  font-family: 'Play', sans-serif;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  border-style: solid;
+  transition-duration: 1s;
+}
+
+.deletebtm{
+  padding: 5px;
+  margin: 1px;
+  background-color: rgb(252, 71, 71);
+  border-radius: 10px;
+  border-color: rgb(252, 71, 71);
+  font-family: 'Play', sans-serif;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  border-style: solid;
+  transition-duration: 1s;
+}
+
+table{
+  border-radius: 0px 23px 0px 0px;
+  padding: 5px;
+  background: #EAEAEA;
+}
+
+.price{
+  align-self:flex-end;
+  margin-bottom: 10px;
+  padding: 20px;
+  background: radial-gradient(ellipse at 40px 5px,#188409,#0D4A05);
+  border-left: 10px outset #FCAC00;
+  border-right: 0px outset #FCAC00;
+  border-radius: 0px 23px 0px 0px;
+  font-size: 30px;
+  color: rgb(255, 140, 0);
+  border-radius: 20px;
+  text-shadow: 0px 0px 2px 2px;
+  transition-duration: 1s;
+}
+
+.price:hover{
+  border-left: 0px outset #FCAC00;
+  border-right: 10px outset #FCAC00;
+}
+
+td > *{
+  width: 90%;
+}
+
+.tableinput{
+  font-family: 'Play', sans-serif;
+  border-radius: 0px 15px 0px 0px;
+}
+
+.greenaccept{
+  padding: 5px;
+  margin: 1px;
+  background-color: rgb(53, 180, 15);
+  border-radius: 10px;
+  border-color: rgb(53, 180, 15);
+  font-family: 'Play', sans-serif;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  border-style: solid;
+  transition-duration: 1s;
 }

@@ -6,18 +6,19 @@
 }
 
 .non-active{
-
     background: rgb(231, 231, 231);
+    background: linear-gradient(135deg,  rgba(24, 132, 9, 0.5), rgba(24, 132, 9, 0.5) 49%, rgba(13, 74, 5, 0.5) 50%, rgba(13, 74, 5, 0.5));
     transition-duration: .5s;
 }
 
 .non-active:hover{
     background: rgb(216, 216, 216);
+    background: linear-gradient(135deg,  rgba(24, 132, 9, 0.7), rgba(24, 132, 9, 0.7) 49%, rgba(13, 74, 5, 0.7) 50%, rgba(13, 74, 5, 0.7));
     cursor: pointer
 }
 
 .active{
-    background: rgb(255, 171, 61);
+    background: linear-gradient(135deg, #FCAC00, #FCAC00 49%, #bf8303 50%, #bf8303);
     transition-timing-function:ease-out;
     transition-duration: .5s;
     margin: 5px;
@@ -34,8 +35,13 @@
     margin: 5px;
 }
 
+.option{
+  font-family: 'Play', sans-serif;
+}
+
 .active:hover{
-    background: rgb(255, 148, 7);
+    background: linear-gradient(135deg, #FCAC00, #FCAC00 49%, #bf8303 50%, #bf8303);
+    box-shadow: -10px 0px 20px -1px orange inset;
     cursor: pointer
 }
 
@@ -44,4 +50,27 @@
     flex-direction: column;
     background: rgb(250, 250, 250);
     border-radius: 10px;
+    cursor: pointer
+}
+
+.optact{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.toggle .redbtm{
+  padding: 5px;
+  margin: 1px;
+  background-color: rgb(220, 20, 60);
+  border-radius: 10px;
+  border-color: rgb(220, 20, 60);
+  font-family: 'Play', sans-serif;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  border-style: solid;
+  transition-duration: 1s;
+  cursor: pointer
 }
